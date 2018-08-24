@@ -1,0 +1,92 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background: rgb(95,83,146);
+}
+
+.account {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.account .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.account .form-control:focus {
+  z-index: 2;
+}
+
+.account .first {
+	margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.account .last {
+	margin-bottom: 10px;
+	margin-top: -1px;
+  border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.account .middle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+ border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.account .custom-select {
+	margin-bottom: 15px;
+}
+
+.category {
+	border: 1px solid #dcdcdc;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+textarea {
+	resize: none;
+}
+
+legend {
+	color: white;
+	text-align: center;
+}
+
+a {
+	-moz-transition: color 0.2s ease, border bottom 0.2s ease;
+	-webkit-transition: color 0.2s ease;
+	-ms-transition: color 0.2s ease;
+	transition: color 0.2s ease;
+	text-decoration: none;
+	border-bottom: dotted 1px;
+	color: white;
+}
+
+a:hover {
+	border-bottom-color: transparent;
+	text-decoration: none;
+	border-bottom: none;
+	color: lightgray;
+}
+
+hr {
+	background-color: lightgray;
+}

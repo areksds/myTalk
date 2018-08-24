@@ -1,0 +1,32 @@
+body {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-right: 10px;
+	padding-left: 10px;
+	background: rgb(95,83,146);
+	margin: auto; 
+	justify-content: center;
+}
+
+a {
+	-moz-transition: color 0.2s ease, border bottom 0.2s ease;
+	-webkit-transition: color 0.2s ease;
+	-ms-transition: color 0.2s ease;
+	transition: color 0.2s ease;
+	text-decoration: none;
+	border-bottom: dotted 1px;
+	color: white;
+}
+
+a:hover {
+	border-bottom-color: transparent;
+	text-decoration: none;
+	border-bottom: none;
+	color: lightgray;
+}
+
+hr {
+	background-color: lightgray;
+}

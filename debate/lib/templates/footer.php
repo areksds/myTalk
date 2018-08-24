@@ -1,0 +1,2 @@
+<p style="color: lightgray" class="mt-5 mb-3">myTalk ©2017-<?php echo date("Y"); ?> Arek Der-Sarkissian<br>
+v<?php include('lib/header.php'); echo $version['number']; ?>. Licensed to <?php echo $version['id']; ?>. <a href="mailto:<?php echo $config['support']; ?>">Need help?</a></p>

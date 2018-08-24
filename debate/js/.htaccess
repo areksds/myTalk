@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^$ ../index.php?error=403 [L]
+RewriteRule ^[a-zA-Z0-9]+$ ../index.php?error=403 [L]
+</IfModule>
