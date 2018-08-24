@@ -1,0 +1,12 @@
+# myTalk
+The innovative Debateware solution currently used by SoCal JSA.
+
+# Reminders for installation
+- Always remove the config.php file before uploading (unless it is a fresh install)
+- Upload what is inside "debate"
+- Remember to turn on hidden files if you want .htaccess to correctly upload.
+- Make sure the version number is updated
+  - Guide: Major version changes, 1.X.x, Minor, 1.x.X, New generation, 2.+
+
+# Credits
+- Created by Arek Der-Sarkissian for the Junior State of America
