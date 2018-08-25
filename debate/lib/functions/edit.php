@@ -125,6 +125,7 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 			if ($head != '') {
 				if (__lookup_user_name($head) == 0) {
 					echo "Please enter a valid myTalk registered name for your chapter president, or leave it blank for no president.";
+					exit(1);
 				}	
 			}
 		
@@ -133,10 +134,11 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 			} elseif (__lookup_chapter_name($name, $state) != 0 && $name != '') {
 				echo "Please enter a unique chapter name.";
 			} else {
+				
 				if ($head != '') {
 					$head = __lookup_name_id($head);
 				} else {
-					$head = 0;
+					$head = "0";
 				}
 				
 				if ($name != '') {
@@ -147,6 +149,25 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 						$rtest->bindParam(':name', $name);
 						$rtest->bindParam(':id', $id);	
 						$rtest->execute();
+					} catch (Exception $e) {
+						$err = $e->getMessage();
+					}
+
+					if ($err == '') {
+						$changes++;
+					} else {
+						$errors++;
+					}
+				}
+				
+				if ($head != '') {
+					try {
+						$err = '';
+						$db = new DbConn;
+						$test = $db->conn->prepare("UPDATE chapters SET president = :president WHERE id = :id");
+						$test->bindParam(':president', $head);
+						$test->bindParam(':id', $id);	
+						$test->execute();
 					} catch (Exception $e) {
 						$err = $e->getMessage();
 					}
@@ -178,25 +199,6 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 							$errors++;
 						}
 					}	
-				}
-				
-				if ($head != '') {
-					try {
-						$err = '';
-						$db = new DbConn;
-						$test = $db->conn->prepare("UPDATE chapters SET president = :president WHERE id = :id");
-						$test->bindParam(':president', $head);
-						$test->bindParam(':id', $id);	
-						$test->execute();
-					} catch (Exception $e) {
-						$err = $e->getMessage();
-					}
-
-					if ($err == '') {
-						$changes++;
-					} else {
-						$errors++;
-					}
 				}
 				
 				if ($changes > 0 && $errors == 0) {

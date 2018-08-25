@@ -54,6 +54,8 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 		$level = filter_var($_POST['level'], FILTER_SANITIZE_STRING);
 		if ($_SESSION['level'] >= 6) {
 			$state = filter_var($_POST['state'], FILTER_SANITIZE_STRING);
+		} else {
+			$state = $_SESSION['state'];
 		}
 		$changes = 0;
 		$errors = 0;

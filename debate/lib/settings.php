@@ -69,8 +69,8 @@ function adminSettings($panel, $base, $fileDir) {
 						</div>
 					</div>
 				</div>
-				</div>
 				<?php } ?>
+			</div>
 			<div id="chapters" style="display: none">
 				<div class="row">
 					<div class="col-12">
@@ -790,7 +790,7 @@ function adminSettings($panel, $base, $fileDir) {
 					$.ajax({
 						url: "<?php echo $base . $fileDir . "/"; ?>lib/functions/add.php", 
 						type: "post",
-						data: "type=" + type + "&name=" + encodeURIComponent($('#name').val()) + "&bulk=" + isbulk + "&list=" + encodeURIComponent($('#list').val()) + "&head=" + encodeURIComponent($('#head').val()) + <?php if ($panel != PANEL_URLS[2]) {?> "&region=" + encodeURIComponent($('#region').val()) + "&code=" + $('#code').val() + <?php } ?> <?php if($_SESSION['level'] >= 6){ ?> "&state=" + $("#state").find(":selected").val()<?php } ?>,
+						data: "type=" + type + "&name=" + encodeURIComponent($('#name').val()) + "&bulk=" + isbulk + "&list=" + encodeURIComponent($('#list').val()) + "&head=" + encodeURIComponent($('#head').val()) <?php if ($panel != PANEL_URLS[2]) {?> + "&region=" + encodeURIComponent($('#region').val()) + "&code=" + $('#code').val() <?php } ?> <?php if($_SESSION['level'] >= 6){ ?> + "&state=" + $("#state").find(":selected").val()<?php } ?>,
 						dataType: 'html',
 						success:function(data){
 							if (data == "0"){
@@ -808,7 +808,7 @@ function adminSettings($panel, $base, $fileDir) {
 					$.ajax({
 						url: "<?php echo $base . $fileDir . "/"; ?>lib/functions/edit.php", 
 						type: "post",
-						data: "type=" + type + "&name=" + encodeURIComponent($('#selection-name').val()) + "&head=" + encodeURIComponent($('#selection-head').val()) + "&id=" + $("#selections").find(":selected").val() + <?php if ($panel != PANEL_URLS[2]) {?> "&region=" + encodeURIComponent($('#selection-region').find(":selected").html()) + "&code=" + $('#selection-code').val() + <?php } ?> <?php if($_SESSION['level'] >= 6){ ?> "&state=" + $("#selection-state").find(":selected").val()<?php } ?>,
+						data: "type=" + type + "&name=" + encodeURIComponent($('#selection-name').val()) + "&head=" + encodeURIComponent($('#selection-head').val()) + "&id=" + $("#selections").find(":selected").val() <?php if ($panel != PANEL_URLS[2]) {?> + "&region=" + encodeURIComponent($('#selection-region').find(":selected").html()) + "&code=" + $('#selection-code').val() <?php } ?> <?php if($_SESSION['level'] >= 6){ ?> + "&state=" + $("#selection-state").find(":selected").val()<?php } ?>,
 						dataType: 'html',
 						success:function(data){
 							if (data == "0"){

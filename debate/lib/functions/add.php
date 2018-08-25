@@ -187,12 +187,14 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 					$head = 0;
 				}
 				
+				$chap_id = $_SESSION['chapter'];
+				
 				if ($_SESSION['level'] == 3) {
 					$db = new DbConn;
 					$list = $db->conn->prepare("SELECT region FROM chapters WHERE id = :id");
-					$list->bindParam(':id', $_SESSION['chapter']);
+					$list->bindParam(':id', $chap_id);
 					$list->execute();
-					$results = $list->fetchAll(PDO::FETCH_ASSOC);
+					$results = $list->fetch(PDO::FETCH_ASSOC);
 					$region = $results['region'];
 				}
 				$err = '';
