@@ -1,7 +1,5 @@
 <?php 
 
-#
-
 if (isset($_POST['type'])){$type = filter_var($_POST['type'], FILTER_SANITIZE_STRING); }
 if (isset($_POST['name'])){$name = trim(filter_var($_POST['name'], FILTER_SANITIZE_STRING)); }
 if (isset($_POST['region'])){$region = trim(filter_var($_POST['region'], FILTER_SANITIZE_STRING)); }
