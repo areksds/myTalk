@@ -68,7 +68,7 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 						$test = $db->conn->prepare("SELECT last FROM members WHERE id = :id");
 						$test->bindParam(':id', $id);	
 						$test->execute();
-						$response = $list->fetchAll(PDO::FETCH_ASSOC);
+						$response = $test->fetchAll(PDO::FETCH_ASSOC);
 						$full = $first . " " . $response['last'];
 						$rdb = new DbConn;
 						$rtest = $rdb->conn->prepare("UPDATE members SET fullname = :full WHERE id = :id");
@@ -87,6 +87,7 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 					if ($err == '') {
 						$changes++;
 					} else {
+						echo $err;
 						$errors++;
 					}
 				}
@@ -102,7 +103,7 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 						$test = $db->conn->prepare("SELECT first FROM members WHERE id = :id");
 						$test->bindParam(':id', $id);	
 						$test->execute();
-						$response = $list->fetchAll(PDO::FETCH_ASSOC);
+						$response = $test->fetchAll(PDO::FETCH_ASSOC);
 						$full = $response['first'] . " " . $last;
 						$rdb = new DbConn;
 						$rtest = $rdb->conn->prepare("UPDATE members SET fullname = :full WHERE id = :id");
