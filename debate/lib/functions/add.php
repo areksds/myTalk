@@ -49,15 +49,12 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 						if (!in_array($state, array(1,2,3,4,5,6,7,8,9,10))) {
 							echo "Please select a valid state.";
 							exit(1);
-							break;
 						} elseif (__lookup_region_name($regions_name, $state) > 0 && $regions_name == '') {
 							echo "Please enter full and unique region names for all items of your bulk list.";
 							exit(1);
-							break;
 						} elseif (__lookup_region_code($regions_code, $state) > 0 || $regions_code == '') {
 							echo "Please enter valid region codes for your regions.";
 							exit(1);
-							break;
 						} else {
 							$region = $db->conn->prepare("INSERT INTO regions(name, code, state, mayor) VALUE (:name, :code, :state, :mayor)");
 							$region->bindParam(':name', $regions_name);
@@ -153,11 +150,9 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 							exit(1);
 						} elseif (__lookup_chapter_name($chapters_name, $state) > 0 || $chapters_name == '') {
 							echo "Please enter valid and unique chapter names for all items of your bulk list.";
-							break;
 							exit(1);
 						} elseif (__lookup_region_name($chapters_region, $state) == 0 || $chapters_region == '') {
 							echo "Please enter valid region names for your chapters.";
-							break;
 							exit(1);
 						} else {
 							$chapter = $db->conn->prepare("INSERT INTO chapters(name, region, state, president) VALUE (:name, :region, :state, :president)");
