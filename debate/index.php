@@ -14,8 +14,10 @@ setcookie("SITE",$fileDir);
 if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
 	$base = 'https://' . $_SERVER["SERVER_NAME"];
 } else {
-	$base = 'http://' . $_SERVER["SERVER_NAME"];
+	$base = 'https://' . $_SERVER["SERVER_NAME"];
+    header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
 }
+
 
 require 'lib/functions/dbconn.php';
 require 'lib/functions/test_conn.php';
