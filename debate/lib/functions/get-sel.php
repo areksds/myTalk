@@ -29,7 +29,7 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 				
 
 			header('Content-Type: application/json');
-			echo json_encode($response);
+			echo htmlspecialchars_decode(json_encode($response), ENT_QUOTES);
 
 		} catch (Exception $e) {
 			$err = $e->getMessage();
