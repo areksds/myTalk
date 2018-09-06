@@ -8,7 +8,6 @@ if (dirname($_SERVER["PHP_SELF"]) != "/") {
 	$fileDir = '';
 }
 
-
 setcookie("SITE",$fileDir);
 
 if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {

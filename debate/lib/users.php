@@ -270,7 +270,6 @@ function adminUsers($panel, $base, $fileDir) {
 						type: "post",
 						data: "first=" + $('#first').val() + "&last=" + $('#last').val() + "&email=" + $('#email').val() <?php if ($panel == PANEL_URLS[5] || $panel == PANEL_URLS[6]) { ?> + "&state=" + $("#findstate").find(":selected").val() <?php } ?>,
 						dataType: 'json',
-						async: false,
 						success:function(data){
 							$('#table').hide();
 							$('#table tbody tr').remove(); 
@@ -308,6 +307,7 @@ function adminUsers($panel, $base, $fileDir) {
 
 					   },
 						beforeSend: function () {
+							$('#table tbody tr').remove();
 							$('#table').hide();
 							$('#info').hide();
 							$('#overflow').empty();
