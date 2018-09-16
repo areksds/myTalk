@@ -28,6 +28,10 @@ if ($sql_test === 0) {
 	require 'lib/install.php';
 	
 	generateInstall($base, $fileDir);
+} elseif (file_exists("lib/installer/upgrade.sql")) {
+	require 'lib/install.php';
+	
+	generateUpgrade($base, $fileDir);
 } elseif ($sql_test === 1) {
 	require 'lib/functions/functions.php';
 	require 'lib/login.php';
