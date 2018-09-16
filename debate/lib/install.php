@@ -38,7 +38,7 @@ include 'header.php';
 	<body class="text-center">
 		<form class="form-signin">
 			<img class="mb-4" src="images/logo.png" alt="" width="150" height="150">
-			<h1 style="color: white" class="h3 mb-3 font-weight-normal">Click upgrade to update your myTalk installation to the next version (make sure to chmod/chown the files).</h1>
+			<h1 style="color: white" class="h3 mb-3 font-weight-normal">Click upgrade to update your myTalk installation to the next version (chmod the files).</h1>
 			<br>
 		  <button onclick="install()" id="installation" class="btn btn-lg btn-success btn-block">Upgrade</button>
 			<br><div id="error"></div>
