@@ -220,7 +220,7 @@ function adminSettings($panel, $base, $fileDir) {
 				  <div class="modal-body">
 					<?php if ($panel == PANEL_URLS[5] || $panel == PANEL_URLS[6]) { // JSF Employee and Admin Access ?>
 					<div class="form-group">
-						<label id="states" for="selection-state"></label>
+					<label id="states" for="selection-state"></label>
 					   <select class="custom-select" id="selection-state">
 						<option value="1" id="state-1">NorCal</option>
 						<option value="2" id="state-2">PNW</option>
