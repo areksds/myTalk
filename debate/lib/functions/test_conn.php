@@ -346,6 +346,27 @@ function __lookup_region_name_id($information){
 	
 }
 
+function __lookup_region_code_id($information){
+
+	try {
+		$db = new DbConn;
+		$err = '';
+		$test = $db->conn->prepare("SELECT code FROM regions WHERE id = :id");
+		$test->bindParam(':id', $information);	
+		$test->execute();
+		$result = $test->fetch(PDO::FETCH_ASSOC);
+		
+	} catch (Exception $e) {
+		$err = 1;
+        return $err;
+    }
+	
+	if ($err == '') {
+		return $result['name'];
+	}
+	
+}
+
 function __lookup_level($id){
 
 	try {

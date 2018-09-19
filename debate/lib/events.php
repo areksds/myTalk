@@ -140,11 +140,11 @@ function adminEvents($panel, $base, $fileDir) {
 					  </div>
 					  <div class="form-group">
 					   <label for="type">Event Type</label>
-						<select class="custom-select" id="events">
-							<option id="0">Convention</option>
-							<option id="1">Winter Congress</option>
-							<option id="2">Regional One-Day</option>
-							<option id="3">Chapter One-Day</option>
+						<select class="custom-select" id="event-type">
+							<option value="0">Convention</option>
+							<option value="1">Winter Congress</option>
+							<option value="2">Regional One-Day</option>
+							<option value="3">Chapter One-Day</option>
 					  	</select>
 					  </div>
 					  <div class="form-group" id="more-input">
@@ -215,25 +215,59 @@ function adminEvents($panel, $base, $fileDir) {
 				$('[type="date"]').datepicker();
 			}
 			
-			$('#events').change(function(){
+			$('#event-type').change(function(){
 				if ($(this).val() === '2') {
+					$('#extra-input').remove();
 					$('#extra-label').html("Region");
 					$('#extra-label').show();
-					$('#more-input').append('<select id="extra-input"></select>');
+					$('#more-input').append('<select class="form-control" id="extra-input"></select>');
 				} else {
 					if ($(this).val() === '3') {
+						$('#extra-input').remove();
 						$('#extra-label').html("Chapter");
 						$('#extra-label').show();
-						$('#more-input').append('<input id="extra-input" type="text">');
+						$('#more-input').append('<input id="extra-input" class="form-control" type="text">');
 					} else {
 						$('#extra-label').hide();
 						$('#extra-label').html("");
+						$('#extra-input').hide();
 						$('#extra-input').remove();
 					}	
 				}
 			});
 			
-			
+			function edit(id) {
+				$.ajax({
+					url:"<?php echo $base . $fileDir . "/"; ?>lib/functions/events.php", 
+					type: "post",
+					data: "id=" + id + "&full",
+					dataType: 'json',
+					success:function(data){
+						
+						$.ajax({
+							url:"<?php echo $base . $fileDir . "/"; ?>lib/functions/regions.php", 
+							type: "post",
+							data: "state=" + <?php if ($_SESSION['level'] > 6){ ?> $('#selection-state').val() <? } else { echo $_SESSION['state']; } ?>,
+							dataType: 'json',
+							success:function(regions){
+								for (x in regions) {
+									$('#extra-input').append($('<option>'.attr('value', regions[x].code).text(regions[x].code)));
+								}
+								
+							}
+						});
+						
+						$('#event-id').val(data.id);
+						$('#name').val(data.name);
+						$('#date').val(data.date);
+						$('#address').val(data.address);
+						$('#city').val(data.city);
+						$('#zip').val(data.zip);
+						$('#blocks').val(data.blocks);
+						$('#eventEdit').modal('show');
+					}
+				});
+			}
 		<?php } ?>
 		</script>
 			
