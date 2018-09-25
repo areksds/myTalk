@@ -99,7 +99,7 @@ if (isset($state)) {
 
 				print "<h2 style=\"color: white\">" . $rresult['name'] . "</h2><hr>";
 
-				if ($_SESSION['level'] == 2) { print "<button class=\"btn btn-light\" onClick=\"revert()\">Return to All Events</button>"; } else { print "<button class=\"btn btn-light\" onClick=\"edit(" . $id . ")\">Edit Event Details</button>&nbsp<button class=\"btn btn-light\" onClick=\"revert()\">Return to All Events</button>"; }
+				if ($_SESSION['level'] == 2) { print "<button class=\"btn btn-light\" onClick=\"revert()\">Return to All Events</button>"; } else { print "<button class=\"btn btn-light\" onClick=\"edit(" . $id . ")\">Edit Event Details</button>&nbsp<button class=\"btn btn-success\" onClick=\"archive(" . $id . ")\">Archive Event</button>&nbsp<button class=\"btn btn-danger\" onClick=\"delete(" . $id . ")\">Delete Event</button>&nbsp<span style=\"color: white\">||</span>&nbsp<button class=\"btn btn-light\" onClick=\"revert()\">&larr; Return to All Events</button>"; }
 				print "<hr>";
 				$i = 0;
 				foreach ($result as $debate) {
@@ -134,7 +134,7 @@ if (isset($state)) {
 				}
 
 				if ($_SESSION['level'] != 2) { 
-					print "<button class=\"btn btn-light\" onClick=\"talk()\">Add New Debate</button>"; 
+					print "<button class=\"btn btn-light\" onClick=\"talk(". $id .")\">Add New Debate</button>"; 
 				}
 
 			} catch (Exception $e) {
