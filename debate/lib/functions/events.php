@@ -90,9 +90,6 @@ if (isset($state)) {
 
 				$rdb = new DbConn;
 				$rstmt = $rdb->conn->prepare("SELECT * FROM events WHERE id = :event");
-				/** 
-					USE OUTPUT FOR EDIT EVENT MODAL
-				*/
 				$rstmt->bindParam(":event", $id);
 				$rstmt->execute();
 				$rresult = $rstmt->fetch(PDO::FETCH_ASSOC);
