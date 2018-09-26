@@ -48,7 +48,6 @@ function home($base, $fileDir){
 			<?php } ?>
 		  <?php include 'templates/footer.php'; ?>
 		</form>
-
 		<?php include 'templates/javascript.php'; ?>
 	</body>
 	</html>

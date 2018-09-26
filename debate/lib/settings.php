@@ -386,7 +386,8 @@ function adminSettings($panel, $base, $fileDir) {
 			  </div>
 			</div>		
 				
-			<?php include 'templates/javascript.php'; ?>	
+			<?php include 'templates/javascript.php'; ?>
+			<?php include 'templates/session.php'; ?>
 			<script>
 				
 				$(document).ready(function(){ 

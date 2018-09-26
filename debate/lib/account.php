@@ -43,16 +43,16 @@
 				<?php if ($_SESSION['chapter'] != 0) { $result = __lookup_chapter($_SESSION['chapter']); ?>
 					<textarea <?php if (strlen($result['name']) >= 24) { ?> rows="<?php echo round(strlen($result['name'])/24); ?>" <?php } else { ?> rows="1" <?php } ?> id="chapter" class="first form-control" placeholder="<?php echo $result['name'];?>" autofocus="" disabled></textarea>
 				<?php } else { ?>
-					<input type="text" id="chapter" class="first form-control" placeholder="Staff account - No Chapter" autofocus="" disabled>
+					<input type="text" id="chapter" class="last form-control" placeholder="Staff account" autofocus="" disabled>
 				<?php } ?>
-				<input type="text" id="graduation" class="last form-control" placeholder="<?php if ($_SESSION['graduation'] != 0) { echo $_SESSION['graduation']; } else { echo "Staff account - No Graduation"; } ?>" autofocus="" disabled>
+				<input type="text" id="graduation" class="last form-control" placeholder="<?php if ($_SESSION['graduation'] != 0) { echo $_SESSION['graduation']; } else { echo "Staff account"; } ?>" autofocus="" disabled>
 			</div><br>
 			<div class="category">
 				<legend>Information</legend>
 				<i style="color: white">Information about your account. <a href="mailto:<?php echo $config['support']; ?>">Contact the site admin</a> for help.</i><br><br>
 				<p style="color: white"><b>Account ID: </b><?php echo $_SESSION['id']; ?></p>
-				<?php if ($_SESSION['state'] != 0) { ?><p style="color: white"><b>State: </b><?php echo STATES[$_SESSION['state'] - 1]; ?></p><?php } else { ?><p style="color: white"><b>National Employee Account</b><?php } ?>
-				<?php if ($_SESSION['chapter'] != 0) { ?><p style="color: white"><b>Region: </b><?php echo $result['region']; ?></p><?php } ?>
+				<p style="color: white"><b>State: </b><?php echo STATES[$_SESSION['state'] - 1]; ?></p>
+				<p style="color: white"><b>Region: </b><?php echo $result['region']; ?></p>
 				<p style="color: white"><b>Permission level: </b><?php echo PERMISSIONS[$_SESSION['level'] - 1]; ?></p>
 			</div><br>
 		  <button type="submit" id="submit" class="btn btn-lg btn-success btn-block" disabled>Save</button>
@@ -61,6 +61,7 @@
 		  <?php include 'templates/footer.php'; ?>
 		</form>
 		<?php include 'templates/javascript.php'; ?>
+		<?php include 'templates/session.php'; ?>
 		<script src="<?php echo $fileDir; ?>/js/account.js"></script>
 	</body>
 	</html>

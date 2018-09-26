@@ -308,6 +308,7 @@ function admin($panel, $base, $fileDir){
 				</div>
 			</div>
 		</div>
-		<?php include 'templates/javascript.php'; ?>	
+		<?php include 'templates/javascript.php'; ?>
+		<?php include 'templates/session.php'; ?>
 		</body>	
 <?php } ?>
