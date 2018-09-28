@@ -175,7 +175,6 @@ function adminEvents($panel, $base, $fileDir) {
 			</div>
 		<?php include 'templates/javascript.php'; ?>
 		<?php include 'templates/session.php'; ?>
-		<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script> -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js" crossorigin="anonymous"></script>
 		
 		<script>
