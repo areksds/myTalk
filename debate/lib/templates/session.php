@@ -25,7 +25,6 @@ $(document).idle({
   onIdle: function(){
    $('#loggedout').modal({backdrop: 'static', keyboard: false});
   },
-  keepTracking: false,
   idle: 1440000
 })
 </script>
