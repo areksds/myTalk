@@ -287,23 +287,25 @@ function adminEvents($panel, $base, $fileDir) {
 			
 			/** MAKE SURE TO ONLY SHOW ONE REGION FOR MAYOR */
 			$('#event-type').change(function(){
-				if ($(this).val() === '2') {
-					$('#extra-input').remove();
-					$('#extra-label').html("Region");
-					$('#extra-label').show();
-					$('#more-input').append('<select id="extra-input" class="form-control"></select>');
-					$.ajax({
-						url:"<?php echo $base . $fileDir . "/"; ?>lib/functions/regions.php", 
-						type: "post",
-						data: "state=" + <?php if ($panel == PANEL_URLS[5] || $panel == PANEL_URLS[6]) { ?>parseInt($("#selection-state").val(), 10)<?php } else { echo $_SESSION['state']; } ?>,
-						dataType: 'json',
-						success:function(data){
-							for (x in data) {
-								$('#extra-input').append('<option value="'+ data[x].code +'">'+ data[x].code +'</option>');
+				<?php if($_SESSION['level'] != 3) { ?>
+					if ($(this).val() === '2') {
+						$('#extra-input').remove();
+						$('#extra-label').html("Region");
+						$('#extra-label').show();
+						$('#more-input').append('<select id="extra-input" class="form-control"></select>');
+						$.ajax({
+							url:"<?php echo $base . $fileDir . "/"; ?>lib/functions/regions.php", 
+							type: "post",
+							data: "state=" + <?php if ($panel == PANEL_URLS[5] || $panel == PANEL_URLS[6]) { ?>parseInt($("#selection-state").val(), 10)<?php } else { echo $_SESSION['state']; } ?>,
+							dataType: 'json',
+							success:function(data){
+								for (x in data) {
+									$('#extra-input').append('<option value="'+ data[x].code +'">'+ data[x].code +'</option>');
+								}
 							}
-					   	}
-					});
-				} else {
+						});
+					} else {
+				<?php } ?>
 					if ($(this).val() === '3') {
 						$('#extra-input').remove();
 						$('#extra-label').html("Chapter");
@@ -314,9 +316,11 @@ function adminEvents($panel, $base, $fileDir) {
 						$('#extra-label').html("");
 						$('#extra-input').hide();
 						$('#extra-input').remove();
-					}	
+					}
+				<?php if($_SESSION['level'] != 3) { ?>		
 				}
 			});
+			<?php } ?>
 			
 			
 		<?php } ?>
