@@ -18,7 +18,7 @@ CREATE TABLE `bills` (
 CREATE TABLE `chapters` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
-  `region` varchar(100) NOT NULL,
+  `region` int(11) NOT NULL,
   `state` int(2) NOT NULL,
   `president` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -62,7 +62,7 @@ CREATE TABLE `events` (
   `address` text NOT NULL,
   `city` text NOT NULL,
   `state` varchar(2) NOT NULL,
-  `region` varchar(255) DEFAULT NULL,
+  `region` int(11) DEFAULT NULL,
   `chapter` INT(11) NULL DEFAULT NULL,
   `zip` int(10) NOT NULL,
   `congress` tinyint(1) NOT NULL,
