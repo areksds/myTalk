@@ -334,6 +334,7 @@ function __lookup_region_name_id($information){
 		$test->bindParam(':id', $information);	
 		$test->execute();
 		$result = $test->fetch(PDO::FETCH_ASSOC);
+		$rows = $test->rowCount();
 		
 	} catch (Exception $e) {
 		$err = 1;
@@ -341,7 +342,7 @@ function __lookup_region_name_id($information){
     }
 	
 	if ($err == '') {
-		if (count($result) > 0) {
+		if ($rows > 0) {
 			return $result['name'];
 		} else {
 			$result['name'] = "Deleted";
@@ -361,6 +362,7 @@ function __lookup_region_code_id($information){
 		$test->bindParam(':id', $information);	
 		$test->execute();
 		$result = $test->fetch(PDO::FETCH_ASSOC);
+		$rows = $test->rowCount();
 		
 	} catch (Exception $e) {
 		$err = 1;
@@ -368,7 +370,7 @@ function __lookup_region_code_id($information){
     }
 	
 	if ($err == '') {
-		if (count($result) > 0) {
+		if ($rows > 0) {
 			return $result['code'];
 		} else {
 			$result['code'] = "Deleted";

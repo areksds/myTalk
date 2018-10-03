@@ -22,10 +22,6 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 		$state = $_SESSION['state'];
 	}
 	
-	if ($head == '') {
-		$head = intval(0);
-	}
-	
 	if ($type == "region" && $_SESSION['level'] != 3) {
 
 			if ($head != '') {
@@ -45,7 +41,7 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 				if ($head != '') {
 					$head = __lookup_name_id($head);
 				} else {
-					$head = 0;
+					$head = "0";
 				}
 				if ($name != '') {
 					try {
@@ -58,11 +54,6 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 						$rtest->bindParam(':id', $id);	
 						$rtest->execute();
 						
-						$xdb = new DbConn;
-						$xtest = $xdb->conn->prepare("UPDATE chapters SET region = :name WHERE region = :old");
-						$xtest->bindParam(':name', $name);
-						$xtest->bindParam(':old', $old);	
-						$xtest->execute();
 					} catch (Exception $e) {
 						$err = $e->getMessage();
 					}

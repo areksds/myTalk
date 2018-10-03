@@ -266,9 +266,23 @@ function adminEvents($panel, $base, $fileDir) {
 							$('#event-type').trigger('change');
 						} else {
 							if (data.region != null) {
-								$('#event-type').val('2');
-								$('#event-type').trigger('change');
-								$('#extra-input').val(data.region);
+								$('#extra-input').remove();
+								$('#extra-label').html("Region");
+								$('#extra-label').show();
+								$('#more-input').append('<select id="extra-input" class="form-control"></select>');
+								$.ajax({
+									url:"<?php echo $base . $fileDir . "/"; ?>lib/functions/regions.php", 
+									type: "post",
+									data: "state=" + <?php if ($panel == PANEL_URLS[5] || $panel == PANEL_URLS[6]) { ?>parseInt($("#selection-state").val(), 10)<?php } else { echo $_SESSION['state']; } ?>,
+									dataType: 'json',
+									success:function(reg){
+										for (x in reg) {
+											$('#extra-input').append('<option value="'+ reg[x].id +'">'+ reg[x].code +'</option>');
+										}
+										$('#event-type').val('2');
+										$('#extra-input').val(data.region);
+									}
+								});
 							} else {
 								if (data.chapter != null) {
 									$('#event-type').val('3');
@@ -285,7 +299,6 @@ function adminEvents($panel, $base, $fileDir) {
 				});
 			}
 			
-			/** MAKE SURE TO ONLY SHOW ONE REGION FOR MAYOR */
 			$('#event-type').change(function(){
 				<?php if($_SESSION['level'] != 3) { ?>
 					if ($(this).val() === '2') {
