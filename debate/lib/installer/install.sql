@@ -140,7 +140,7 @@ ALTER TABLE `members`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
   
 INSERT INTO `chapters`(`name`, `region`, `state`, `president`) 
-  VALUES ("Deleted Chapter", "None", 0, 0);
+  VALUES ("Deleted Chapter", 0, 0, 0);
 
 INSERT INTO `chapters`(`name`, `region`, `state`, `president`) 
   VALUES ("Temp Chapter", "None", 1, 0);

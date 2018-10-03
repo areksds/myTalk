@@ -52,7 +52,7 @@
 				<i style="color: white">Information about your account. <a href="mailto:<?php echo $config['support']; ?>">Contact the site admin</a> for help.</i><br><br>
 				<p style="color: white"><b>Account ID: </b><?php echo $_SESSION['id']; ?></p>
 				<p style="color: white"><b>State: </b><?php echo STATES[$_SESSION['state'] - 1]; ?></p>
-				<p style="color: white"><b>Region: </b><?php echo $result['region']; ?></p>
+				<p style="color: white"><b>Region: </b><?php $region = __lookup_region_name_id($result['region']); echo $region['name']; ?></p>
 				<p style="color: white"><b>Permission level: </b><?php echo PERMISSIONS[$_SESSION['level'] - 1]; ?></p>
 			</div><br>
 		  <button type="submit" id="submit" class="btn btn-lg btn-success btn-block" disabled>Save</button>

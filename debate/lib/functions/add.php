@@ -155,9 +155,11 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 							echo "Please enter valid region names for your chapters.";
 							exit(1);
 						} else {
+							$region_one = __lookup_region_id($chapters_region);
+							$chap_region = $region_one['id'];
 							$chapter = $db->conn->prepare("INSERT INTO chapters(name, region, state, president) VALUE (:name, :region, :state, :president)");
 							$chapter->bindParam(':name', $chapters_name);
-							$chapter->bindParam(':region', $chapters_region);
+							$chapter->bindParam(':region', $chap_region);
 							$chapter->bindParam(':state', $state);
 							$chapter->bindParam(':president', $chapters_president);
 							$chapter->execute();
@@ -196,13 +198,16 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 					$list->execute();
 					$results = $list->fetch(PDO::FETCH_ASSOC);
 					$region = $results['region'];
+				} else {
+					$region_one = __lookup_region_id($region);
+					$chap_region = $region_one['id'];
 				}
 				$err = '';
 				try {
 					$bdb = new DbConn;
 					$chapter = $bdb->conn->prepare("INSERT INTO chapters(name, region, state, president) VALUES (:name, :region, :state, :president)");
 					$chapter->bindParam(':name', $name);
-					$chapter->bindParam(':region', $region);
+					$chapter->bindParam(':region', $chap_region);
 					$chapter->bindParam(':state', $state);
 					$chapter->bindParam(':president', $head);
 					$chapter->execute();

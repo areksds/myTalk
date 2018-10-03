@@ -300,7 +300,7 @@ function adminEvents($panel, $base, $fileDir) {
 							dataType: 'json',
 							success:function(data){
 								for (x in data) {
-									$('#extra-input').append('<option value="'+ data[x].code +'">'+ data[x].code +'</option>');
+									$('#extra-input').append('<option value="'+ data[x].id +'">'+ data[x].code +'</option>');
 								}
 							}
 						});

@@ -341,7 +341,13 @@ function __lookup_region_name_id($information){
     }
 	
 	if ($err == '') {
-		return $result['name'];
+		if (count($result) > 0) {
+			return $result['name'];
+		} else {
+			$result['name'] = "Deleted";
+			return $result['name'];
+		}
+		
 	}
 	
 }
@@ -362,7 +368,13 @@ function __lookup_region_code_id($information){
     }
 	
 	if ($err == '') {
-		return $result['name'];
+		if (count($result) > 0) {
+			return $result['code'];
+		} else {
+			$result['code'] = "Deleted";
+			return $result['code'];
+		}
+		
 	}
 	
 }

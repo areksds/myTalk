@@ -44,18 +44,15 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && $_SESSI
 				$stmt = $db->conn->prepare("DELETE FROM regions WHERE id = :id");
 				$stmt->bindParam(':id', $id);
 				$stmt->execute();
-				
-				$name = __lookup_region_name_id($id);
-				$code = __lookup_region_code_id($id);
 
 				$rdb = new DbConn;
-				$rstmt = $rdb->conn->prepare("UPDATE chapters SET region = 'None' WHERE region = :region");
-				$rstmt->bindParam(':region', $name);
+				$rstmt = $rdb->conn->prepare("UPDATE chapters SET region = 0 WHERE region = :region");
+				$rstmt->bindParam(':region', $id);
 				$rstmt->execute();
 				
 				$xdb = new DbConn;
-				$xstmt = $xdb->conn->prepare("UPDATE events SET region = 'None' WHERE region = :region");
-				$xstmt->bindParam(':region', $code);
+				$xstmt = $xdb->conn->prepare("UPDATE events SET region = 0 WHERE region = :region");
+				$xstmt->bindParam(':region', $id);
 				$xstmt->execute();
 			} catch (Exception $e) {
 				$err = $e->getMessage();

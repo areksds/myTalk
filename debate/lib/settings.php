@@ -722,7 +722,7 @@ function adminSettings($panel, $base, $fileDir) {
 						dataType: 'json',
 						success:function(data){
 							for (x in data) {
-								$('#region').append($('<option>').text(data[x].name).attr('value', data[x].name));
+								$('#region').append($('<option>').text(data[x].name).attr('value', data[x].id));
 							}
 					   }
 					});
