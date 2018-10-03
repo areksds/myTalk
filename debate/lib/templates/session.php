@@ -22,6 +22,6 @@ $(document).idle({
   onIdle: function(){
    $('#loggedout').modal({backdrop: 'static', keyboard: false});
   },
-  idle: 3600000
+  idle: 1440000
 })
 </script>

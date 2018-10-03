@@ -42,8 +42,6 @@ if (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 			} elseif ($result['verified'] != '1') {
 				error_alert("Your email address isn't verified. Please click the link in your email to activate it. <a href=\"resend&email=" . $email . "\" style=\"color: black;\">Having trouble verifying?</a>");
 			} else {
-				ini_set('session.gc_maxlifetime', 3600);
-				session_set_cookie_params(3600);
 				session_start();
                 $_SESSION['email'] = $email;
 				$_SESSION['first'] = $result['first'];
