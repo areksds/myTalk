@@ -192,16 +192,18 @@ function adminSettings($panel, $base, $fileDir) {
 					  <datalist id="names">
 					  </datalist>
 				</div>
+				 <?php if ($panel != PANEL_URLS[2]) { // No Mayor Access ?>
 				<div id="bulk" style="display: none">
 					<div class="form-group">
 						<label for="list" id="list-desc">List of chapters<br><i>Format for each chapter listed (set id to 0 for no president)</i></label>
 						<textarea class="form-control" id="list" rows="6" placeholder="{chapter name; chapter region; president myTalk id},{...}"></textarea>
 					</div>
 				</div>
+				<?php } ?>
 				</div>
 				  <div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" onClick="bulk()" id="switch">Switch to Bulk</button>
+					<?php if ($panel != PANEL_URLS[2]) { // No Mayor Access ?><button type="button" class="btn btn-primary" onClick="bulk()" id="switch">Switch to Bulk</button><?php } ?>
 					<button type="button" class="btn btn-primary" id="save">Save changes</button>
 				  </div>
 				</div>
@@ -673,42 +675,43 @@ function adminSettings($panel, $base, $fileDir) {
 					}
 					
 				})
-				
-				function bulk(){
-					if ($('#switch').html() == "Switch to Bulk") {
-						window.isbulk = "true";
-						$('#addContent').find('#switch').html("Switch to Individual");
-						if ($('#title').html() == "Add New Chapter") {
-							$('#addContent').find('#title').html("Add New Chapters");
-							$('#addContent').find('#states').html("State to add chapters to");
-							$('#addContent').find('#individual').hide();
-							$('#addContent').find('#bulk').show();
-							<?php if ($panel != PANEL_URLS[2]) { // No Mayor Access ?>
+				<?php if ($panel != PANEL_URLS[2]) { // No Mayor Access ?>
+					function bulk(){
+						if ($('#switch').html() == "Switch to Bulk") {
+							window.isbulk = "true";
+							$('#addContent').find('#switch').html("Switch to Individual");
+							if ($('#title').html() == "Add New Chapter") {
+								$('#addContent').find('#title').html("Add New Chapters");
+								$('#addContent').find('#states').html("State to add chapters to");
+								$('#addContent').find('#individual').hide();
+								$('#addContent').find('#bulk').show();
+								<?php if ($panel != PANEL_URLS[2]) { // No Mayor Access ?>
+							} else {
+								$('#addContent').find('#title').html("Add New Regions");
+								$('#addContent').find('#states').html("State to add regions to");
+								$('#addContent').find('#individual').hide();
+								$('#addContent').find('#bulk').show();
+								<?php } ?>
+							}
 						} else {
-							$('#addContent').find('#title').html("Add New Regions");
-							$('#addContent').find('#states').html("State to add regions to");
-							$('#addContent').find('#individual').hide();
-							$('#addContent').find('#bulk').show();
-							<?php } ?>
-						}
-					} else {
-						window.isbulk = "false";
-						$('#addContent').find('#switch').html("Switch to Bulk");
-						if ($('#title').html() == "Add New Chapters") {
-							$('#addContent').find('#title').html("Add New Chapter");
-							$('#addContent').find('#states').html("State to add chapter to");
-							$('#addContent').find('#bulk').hide();
-							$('#addContent').find('#individual').show();
-							<?php if ($panel != PANEL_URLS[2]) { // No Mayor Access ?>
-						} else {
-							$('#addContent').find('#title').html("Add New Region");
-							$('#addContent').find('#states').html("State to add region to");
-							$('#addContent').find('#bulk').hide();
-							$('#addContent').find('#individual').show();
-							<?php } ?>
-						}
-					}			
-				} 
+							window.isbulk = "false";
+							$('#addContent').find('#switch').html("Switch to Bulk");
+							if ($('#title').html() == "Add New Chapters") {
+								$('#addContent').find('#title').html("Add New Chapter");
+								$('#addContent').find('#states').html("State to add chapter to");
+								$('#addContent').find('#bulk').hide();
+								$('#addContent').find('#individual').show();
+								<?php if ($panel != PANEL_URLS[2]) { // No Mayor Access ?>
+							} else {
+								$('#addContent').find('#title').html("Add New Region");
+								$('#addContent').find('#states').html("State to add region to");
+								$('#addContent').find('#bulk').hide();
+								$('#addContent').find('#individual').show();
+								<?php } ?>
+							}
+						}			
+					} 
+				<?php } ?>
 				
 				<?php if ($panel != PANEL_URLS[2]) { // No Mayor Access ?>
 				function region_ref(){
