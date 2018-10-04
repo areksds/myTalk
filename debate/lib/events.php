@@ -55,7 +55,7 @@ function adminEvents($panel, $base, $fileDir) {
 	} else { 
 		if ($_SESSION['level'] == 3) {
 			$xdb = new DbConn;
-			$xstmt = $xdb->conn->prepare("SELECT region FROM chapters WHERE chapter = :chapter");
+			$xstmt = $xdb->conn->prepare("SELECT region FROM chapters WHERE id = :chapter");
 			$xstmt->bindParam(":chapter", $_SESSION['chapter']);
 			$xstmt->execute();
 			$xresult = $xstmt->fetch(PDO::FETCH_ASSOC);

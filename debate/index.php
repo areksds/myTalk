@@ -165,6 +165,8 @@ if ($sql_test === 0) {
 							} else {
 								error(403, 0, $fileDir, $base);
 							}
+						} else {
+							error(404, strip_tags($_GET['path']), $fileDir, $base);
 						}
 					} else {
 						error(404, strip_tags($_GET['path']), $fileDir, $base);
