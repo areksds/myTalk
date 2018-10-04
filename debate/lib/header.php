@@ -5,7 +5,7 @@
 
 require 'config.php';
 
-$version['number']='1.0';
+$version['number']='1.1';
 
 
 
