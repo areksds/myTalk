@@ -1,5 +1,5 @@
 # myTalk
-The innovative Debateware solution currently used by SoCal JSA.
+The (incomplete) innovative Debateware alternative.
 
 # Reminders for installation
 - Always remove the config.php file before uploading (unless it is a fresh install)
